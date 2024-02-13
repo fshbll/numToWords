@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+}
+body {
+    background-color: olivedrab;
+}
+
+.container{
+    padding: 3em 2em;
+    background-color: #ffffff;
+    width: 95vw;
+    max-width: 25em;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 30%;
+    top: 50%;
+    border-radius: 15px;
+    box-shadow: 5px 10px;
+}
+
+input.container {
+
+}
+
