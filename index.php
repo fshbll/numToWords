@@ -11,8 +11,8 @@
 </head>
 <body>
     <div  class= "container">
-        <input id="readNum" type="number" placeholder="Number"/>
-        <button id="get-number"> Convert </button>
+        <input id="readNum" type="number" placeholder="Number" value="" />
+        <button id="get-number" onclick="convertToNumWords()"> Convert </button>
         <div class="worded-numbers">
             
         </div>
