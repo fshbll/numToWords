@@ -1,7 +1,9 @@
 
-const convertToNumWords = () => {
-    let wordNum; 
+const convertToNumWords = () => { 
     let numbers = document.getElementById("readNum").value.split('.')
+    let wordNum;
+    let intPart = numbers[0]
+    let decPart = numbers[1]
 
     // if (numbers === 0){
     //     console.log("Zero")
@@ -10,29 +12,26 @@ const convertToNumWords = () => {
     // else {
     //     console.log(numbers.value)
     // }
-
-    let intPart = numbers[0]
-    let decPart = numbers[1]
-    console.log(decPart)
-
     const intToWords = (num) => {
         let words = ''
 
         const intOnes = num % 10
         const intTens = (num % 100) - intOnes
         const intHundreds =  (num % 1000) - intTens - intOnes
-        const intThousands = (num % 1000000) - intHundreds - intTens - intOnes
+        const intThousands = (num % 10000) - intHundreds - intTens - intOnes
+        const intTenThousands = (num % 100000) - intThousands - intHundreds - intTens - intOnes
+
         const convertOnesToWords = (ones) => { 
             switch (ones) {
-                case 1: return 'one'
-                case 2: return 'two'
-                case 3: return 'three'
-                case 4: return 'four'
-                case 5: return 'five'
-                case 6: return 'six'
-                case 7: return 'seven'
-                case 8: return 'eight'
-                case 9: return 'nine'
+                case 1: return 'one '
+                case 2: return 'two '
+                case 3: return 'three '
+                case 4: return 'four '
+                case 5: return 'five '
+                case 6: return 'six '
+                case 7: return 'seven '
+                case 8: return 'eight '
+                case 9: return 'nine '
                 default: return ''
             }       
 
@@ -55,24 +54,33 @@ const convertToNumWords = () => {
         const convertTeensToWords = (teens) => {
             switch (teens) {
                 case 0: return 'ten '
-                case 1: return 'eleven'
-                case 2: return 'twelve'
-                case 3: return 'thirteen'
-                case 4: return 'fourteen'
-                case 5: return 'fifteen'
-                case 6: return 'sixteen'
-                case 7: return 'seventeen'
-                case 8: return 'eighteen'
-                case 9: return 'nineteen'
+                case 1: return 'eleven '
+                case 2: return 'twelve '
+                case 3: return 'thirteen '
+                case 4: return 'fourteen '
+                case 5: return 'fifteen '
+                case 6: return 'sixteen '
+                case 7: return 'seventeen '
+                case 8: return 'eighteen '
+                case 9: return 'nineteen '
                 default: return ''
             }
         }
 
         //make a statement that handles thousands, millions, billions, trillions, quadrillions
+        
+        if(intTenThousands > 0) {
+            words += `${convertOnesToWords(intTenThousands / 10000)}thousand `
+        }
+
+        //handles thousands
+        if(intThousands > 0) {
+            words += `${convertOnesToWords(intThousands / 1000)}thousand `
+        }
 
         //handles hundreds
         if(intHundreds > 0) {
-            words += `${convertOnesToWords(intHundreds / 100)} hundred `
+            words += `${convertOnesToWords(intHundreds / 100)}hundred `
         }
 
         //handles tens to teens
@@ -88,6 +96,8 @@ const convertToNumWords = () => {
             words += convertOnesToWords(intOnes)
         } 
         
+        // console.log(intTenThousands)
+        // console.log(intTenThousands / 10000)
         // console.log(intHundreds)
         // console.log(intTens)
         // console.log(intOnes)
@@ -96,7 +106,10 @@ const convertToNumWords = () => {
         return words
     }
 
-    wordNum = `${intToWords(intPart)} pesos`
-    wordNum += ` and ${intToWords(decPart)} cents`
-    console.log(wordNum)
+    wordNum = `${intToWords(intPart)}pesos `
+    if(decPart) {
+        wordNum += `and ${intToWords(decPart)}cents`
+    }
+
+    console.log(wordNum.trim())
 }
