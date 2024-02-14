@@ -1,17 +1,16 @@
 
 const convertToNumWords = () => { 
+    if (!document.getElementById("readNum").value || document.getElementById("readNum").value === 0){
+        console.log("Input cannot be null.")
+        return
+    }
     let numbers = document.getElementById("readNum").value.split('.')
     let wordNum;
     let intPart = numbers[0]
     let decPart = numbers[1]
 
-    // if (numbers === 0){
-    //     console.log("Zero")
-    //     return
-    // }
-    // else {
-    //     console.log(numbers.value)
-    // }
+    
+
     const intToWords = (num) => {
         let words = ''
 
@@ -19,7 +18,6 @@ const convertToNumWords = () => {
         const intTens = (num % 100) - intOnes
         const intHundreds =  (num % 1000) - intTens - intOnes
         const intThousands = (num % 10000) - intHundreds - intTens - intOnes
-        const intTenThousands = (num % 100000) - intThousands - intHundreds - intTens - intOnes
 
         const convertOnesToWords = (ones) => { 
             switch (ones) {
@@ -68,10 +66,6 @@ const convertToNumWords = () => {
         }
 
         //make a statement that handles thousands, millions, billions, trillions, quadrillions
-        
-        if(intTenThousands > 0) {
-            words += `${convertOnesToWords(intTenThousands / 10000)}thousand `
-        }
 
         //handles thousands
         if(intThousands > 0) {
@@ -95,9 +89,7 @@ const convertToNumWords = () => {
         if(intOnes > 0) {
             words += convertOnesToWords(intOnes)
         } 
-        
         // console.log(intTenThousands)
-        // console.log(intTenThousands / 10000)
         // console.log(intHundreds)
         // console.log(intTens)
         // console.log(intOnes)
@@ -110,6 +102,5 @@ const convertToNumWords = () => {
     if(decPart) {
         wordNum += `and ${intToWords(decPart)}cents`
     }
-
-    console.log(wordNum.trim())
+    document.getElementById("worded-numbers").textContent = wordNum
 }

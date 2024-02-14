@@ -13,8 +13,8 @@
     <div  class= "container">
         <input id="readNum" type="number" placeholder="Number" value="" />
         <button id="get-number" onclick="convertToNumWords()"> Convert </button>
-        <div class="worded-numbers">
-            
+        <div class="worded-numbers-container">
+            <p id=worded-numbers type="text" placeholder="Number Words" value=""></p>
         </div>
     </div>
 </body>
