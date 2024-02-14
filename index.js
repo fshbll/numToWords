@@ -1,7 +1,7 @@
 
 const convertToNumWords = () => {
     let wordNum; 
-    let numbers = document.getElementById("readNum").value
+    let numbers = document.getElementById("readNum").value.split('.')
 
     // if (numbers === 0){
     //     console.log("Zero")
@@ -11,7 +11,9 @@ const convertToNumWords = () => {
     //     console.log(numbers.value)
     // }
 
-    let intPart = Math.floor(numbers)
+    let intPart = numbers[0]
+    let decPart = numbers[1]
+    console.log(decPart)
 
     const intToWords = (num) => {
         let words = ''
@@ -20,7 +22,6 @@ const convertToNumWords = () => {
         const intTens = (num % 100) - intOnes
         const intHundreds =  (num % 1000) - intTens - intOnes
         const intThousands = (num % 1000000) - intHundreds - intTens - intOnes
-        
         const convertOnesToWords = (ones) => { 
             switch (ones) {
                 case 1: return 'one'
@@ -67,9 +68,7 @@ const convertToNumWords = () => {
             }
         }
 
-        if(intThousands > 0) {
-            words += `${convertOnesToWords(intThousands / 1000)} thousand `
-        }
+        //make a statement that handles thousands, millions, billions, trillions, quadrillions
 
         //handles hundreds
         if(intHundreds > 0) {
@@ -94,10 +93,10 @@ const convertToNumWords = () => {
         // console.log(intOnes)
         // console.log(num)
 
-
         return words
     }
 
-    wordNum = intToWords(intPart)
+    wordNum = `${intToWords(intPart)} pesos`
+    wordNum += ` and ${intToWords(decPart)} cents`
     console.log(wordNum)
 }
