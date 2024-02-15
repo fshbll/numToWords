@@ -1,14 +1,15 @@
 const convertToNumWords = () => { 
-    if (document.getElementById("readNum").value < 0 || document.getElementById("readNum").value > 999999999999){
+    let rawData = document.getElementById("readNum").value
+    if (rawData < 0){
+        console.log(document.getElementById("readNum").length())
         console.log("Input cannot be null.")
         return
     }
-    let numbers = document.getElementById("readNum").value.split('.')
-    let intPart = numbers[0]
-    let decPart = numbers[1] || ''
+    let readNum = document.getElementById("readNum").value.split('.')
+    let intPart = readNum[0]
+    let decPart = Math.round(readNum[1] * 100) / 100 || ''
 
     const intToWords = (num) => {
-        console.log(num)
         let words = ''
 
         if(num >= 100) {
@@ -21,10 +22,8 @@ const convertToNumWords = () => {
         }
         
         if(num >= 20) {
-            console.log(num)
             words += convertTensToWords(Math.floor(num/10))
             num%=10
-            console.log(num)
 
             if(num > 0){
                 words += `-`
@@ -51,9 +50,6 @@ const convertToNumWords = () => {
             const partVal = Math.floor(num / i);
 
             if (partVal > 0) {
-                console.log(j)
-                console.log(i)
-                console.log(partVal)
                 words += intToWords(partVal) + ' ' + streek[j];
                 num %= i;
 
@@ -70,13 +66,14 @@ const convertToNumWords = () => {
 
     converter(parseInt(intPart, 10));
     let wordNum = words
-    // if (decPart) {
-    //     wordNum += `and ${convertToNumWords(parseInt(decPart, 10))} cents`;
-    // }
+    if (decPart) {
+        wordNum += `and ${converter(parseInt(decPart))} cents`;
+    }
+
     document.getElementById("worded-numbers").textContent = wordNum
 }
 
 const clearThis = () => {
-    console.log(document.getElementById("readNum").value)
     document.getElementById("readNum").value = ''
+    document.getElementById("worded-numbers").textContent = ''
 }

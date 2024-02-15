@@ -11,19 +11,17 @@
     <script src="./js/converter.js"></script>
 </head>
 <body>
-    <h1>Convert</h1>
+    <!-- <h1>Convert</h1> -->
     <div  class= "container">
         <input id="readNum" type="number" placeholder="Number" value="" />
         <button id="get-number" onclick="convertToNumWords()"> Convert </button>
         <div class="worded-numbers-container">
             <p id=worded-numbers></p>
         </div>
-        <button id="clearNum" onclick="clearThis()">Clear</button>
+        <button id="clearNum" value="Clear" onclick="clearThis()">Clear</button>
     </div>
 </body>
 <script src="./js/index.js">
-    const clearThis = () => {
-    document.getElementById('readNum') = ''
-}
+
 </script>
 </html>
