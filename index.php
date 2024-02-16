@@ -9,31 +9,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link src="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <script src="./js/converter.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <div class="main-div">
         <div class="container">
             <div class = "top-part">
                 <img src="" alt="">
-                <h3>Converter</h3>
+                <h3>Number to Words</h3>
             </div>
             <div class="worded-numbers-container">
+                <button id="copyNum" type="button" onclick="copyData()" style="display: none";></button>
                 <p id=worded-numbers></p>
             </div>
             <div class="input-part">
-                <input id="readNum" oninput="convertToNumWords()" type="number" placeholder="Number" value="" />
-                <button id="clearNum" value="Clear" onclick="clearThis()">Clear</button>    
+                <form>
+                    <button id="history">H</button>
+                    <input id="readNum" type="number" placeholder="Number" value="" />
+                    <button id="submitNum" type="button" onclick="convertToNumWords()">S</button>
+                </form>    
             </div>
         </div>
     </div>
-    <!-- <h1>Convert</h1> -->
-    <!-- <div  class= "container">
-        <input id="readNum" oninput="convertToNumWords()" type="number" placeholder="Number" value="" />
-        <div class="worded-numbers-container">
-            <p id=worded-numbers></p>
-        </div>
-        <button id="clearNum" value="Clear" onclick="clearThis()">Clear</button>
-    </div> -->
 </body>
 <script src="./js/index.js">
 </script>

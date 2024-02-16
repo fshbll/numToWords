@@ -73,9 +73,30 @@ const convertToNumWords = () => {
     }
 
     document.getElementById("worded-numbers").textContent = wordNum;
-};
+    document.getElementById("copyNum").style.display = "block";
+    send_value()
 
-const clearThis = () => {
-    document.getElementById("readNum").value = '';
-    document.getElementById("worded-numbers").textContent = '';
-};
+}
+
+const copyData = () => {
+    let copiedData = document.getElementById("worded-numbers")
+
+    navigator.clipboard.writeText(copiedData.textContent)
+
+    alert("Copied to Clipboard")
+} 
+
+function send_value() {
+    $.ajax({
+        type: 'post',
+        url:'history.php',
+        data: {
+            readNum: "rawData",
+            readNumWords: "numWords"
+        },
+        success: function (data) {
+            console.log(data)
+        }
+    })
+    return false
+}
