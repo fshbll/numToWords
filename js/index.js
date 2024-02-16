@@ -3,10 +3,10 @@ const convertToNumWords = () => {
     
     if (rawData <= 0) {
         document.getElementById("worded-numbers").textContent = "Input cannot be null.";
-        return;
+        return '';
     } else if (rawData > 999999999999) {
         document.getElementById("worded-numbers").textContent = "Exceeded number limit";
-        return;
+        return '';
     }
 
     const readNum = rawData.split('.');

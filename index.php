@@ -10,6 +10,7 @@
     <link src="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <script src="./js/converter.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/7ce477846b.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="main-div">
@@ -19,14 +20,15 @@
                 <h3>Number to Words</h3>
             </div>
             <div class="worded-numbers-container">
-                <button id="copyNum" type="button" onclick="copyData()" style="display: none";></button>
+                <button id="copyNum" type="button" onclick="copyData()" style="display: none";><i class="fa-regular fa-clipboard fa-2xl" style="color: #265073;"></i></button>
                 <p id=worded-numbers></p>
+                
             </div>
             <div class="input-part">
-                <form>
-                    <button id="history">H</button>
+                <form method='post' name='sendform'>
+                    <button id="history"><i class="fa-solid fa-clock-rotate-left fa-2xl" style="color: #265073;"></i></button>
                     <input id="readNum" type="number" placeholder="Number" value="" />
-                    <button id="submitNum" type="button" onclick="convertToNumWords()">S</button>
+                    <button id="submitNum" type="button" onclick="convertToNumWords()"><i class="fa-solid fa-rotate fa-2xl" style="color: #265073;"></i></button>
                 </form>    
             </div>
         </div>
