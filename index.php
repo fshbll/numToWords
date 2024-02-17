@@ -24,29 +24,37 @@
                 <img src="" alt="">
                 <h3><i class="fa-solid fa-rotate fa-2xl"></i></h3>
             </div>
-            <div class="worded-numbers-container">
+            <!-- <div class="history-container">
+                <button id="copyHistoryNum" type="button" onclick="copyData()" style="display: none";><i class="fa-regular fa-clipboard fa-2xl" style="color: #265073;"></i></button>
+                <p id=worded-numbers></p>
+            </div> -->
+            <!-- <div class="worded-numbers-container">
                 <button id="copyNum" type="button" onclick="copyData()" style="display: none";><i class="fa-regular fa-clipboard fa-2xl" style="color: #265073;"></i></button>
+                <p id=worded-numbers></p>
+            </div> -->
+            <div class="history-container">
                 <p id=worded-numbers></p>
             </div>
             <div class="input-part">
                 <form method='post' name='sendform'>
-                    <input id="readNum" type="number" placeholder="Number" value="" />
+                    <button id="delete-history" onclick="remove_data()"><i class="fa-solid fa-trash fa-2xl" style="color: #265073;"></i></button>
+                    <input id="readNum" type="number" placeholder="Enter a number" value="" />
                     <button id="submitNum" type="button" onclick="convertToNumWords()"><i class="fa-solid fa-circle-arrow-right fa-2xl" style="color: #265073;"></i></button>
                 </form>    
             </div>
         </div>
-        <div class="history-div">
+        <!-- <div class="history-div">
             <div class = "top-part">
                 <h3><i class="fa-solid fa-clock-rotate-left fa-2xl" style="color: white;"></i></h3>
             </div>
-            <div class="worded-numbers-container">
-                <button id="copyNum" type="button" onclick="copyData()" style="display: none";><i class="fa-regular fa-clipboard fa-2xl" style="color: #265073;"></i></button>
+                <div class="history-container">
+                <button id="copyHistoryNum" type="button" onclick="copyData()" style="display: none";><i class="fa-regular fa-clipboard fa-2xl" style="color: #265073;"></i></button>
                 <p id=worded-numbers></p>
             </div>
             <div class="input-part">
-                <button id="delete-history"><i class="fa-solid fa-trash fa-2xl" style="color: #265073;"></i></button>
+                <button id="delete-history" onclick="remove_data()"><i class="fa-solid fa-trash fa-2xl" style="color: #265073;"></i></button>
             </div>
-        </div>
+        </div> -->
     </div>
 </body>
 <script src="./js/index.js"></script>

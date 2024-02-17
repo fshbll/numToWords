@@ -45,13 +45,13 @@ body {
     color: white;
 }
 
-.converter-container .worded-numbers-container {
+/* .converter-container .worded-numbers-container {
     display: block;
     border-bottom: solid;
     border-color: #265073;
     padding-left: 10px;
     margin: 2.5em;
-}
+} */
 
 .converter-container .input-part {
     height: relative;
@@ -71,27 +71,35 @@ body {
     margin-left: auto;
 }
 
-.converter-container .worded-numbers-container #copyNum {
+/* .converter-container .worded-numbers-container #copyNum {
     border-radius: 2em;
     height: 3.5em;
     width: 3.5em;
     border: none;
     background-color: #ffff;
-    position:relative;
+    position: relative;
     top: 2px;
     left: 88.2%;
+    box-shadow: 0 0 3px #265073;
+} */
 
-}
+/* #copyNum :hover{
+    transform: scale(1.25, 1.25);
+} */
 
 .converter-container .input-part #readNum {
-    padding-left: 10px;
+    padding-left: 20px;
     border-radius: inherit;
     height: 3.5em;
-    width: 70%;
+    width: 60%;
     border: none;
     box-shadow: 0 0 3px #265073;
     outline: none;
     
+}
+
+.converter-container .input-part #readNum :hover{
+    transform: scale(1.25, 1.25);
 }
 
 .converter-container .input-part #submitNum {
@@ -102,12 +110,12 @@ body {
     background-color: #ffff;
 }
 
-.converter-container .input-part #submitNum .fa-circle-arrow-right{
-    height: relative;
-    width: relative;
+.converter-container .input-part #submitNum :hover{
+    transform: scale(1.25, 1.25);
 }
 
 .history-div {
+    display: none;
     height: relative;
     width: 400px;
     background-color: #ffff;
@@ -123,15 +131,43 @@ body {
     border-radius: 3.5em 3.5em 0 0;
 }
 
-.history-div .worded-numbers-container {
+.history-container {
     display: block;
-    border-bottom: solid;
     border-color: #265073;
-    padding-left: 10px;
     margin: 2.5em;
+    overflow-y: scroll;
+    max-height: 250px;
 }
 
-.history-div .input-part {
+.history-post {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 13px;
+    border: solid;
+    border-color: #265073;
+    border-radius: 1.5em;
+    margin: 5px;
+    gap: 3px;
+}
+
+.history-post :hover{
+    transform: scale(1.10, 1.10);
+    box-shadow: 0 0 3px #265073;
+}
+
+.history-post .data{
+    border-radius: 1em;
+    padding-left: 10px;
+    margin: 5px;
+    flex-basis: 100%;
+    flex-grow: 1;
+}
+
+/* .history-div .input-part {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     height: relative;
     margin-top: 2.5em;
     margin-bottom: 2.5em;
@@ -140,9 +176,9 @@ body {
     display: flex;
     justify-content: space-evenly;
 
-}
+} */
 
-.history-div .input-part #delete-history {
+#delete-history {
     border-radius: inherit;
     height: 3.5em;
     width: 3.5em;
@@ -150,7 +186,12 @@ body {
     background-color: #ffff;
 }
 
+#delete-history :hover{
+    transform: scale(1.25, 1.25);
+}
+
 .title-div{
+    width: relative;
     display: flex;
     flex-basis: 100%;
     flex-grow: 1;
@@ -160,12 +201,12 @@ body {
 
 .title-div .title-container {
     background-color: #265073;
-    width: 67%;
+    width: 54%;
     border-radius: 3em;
 }
 
 .title-div h1{
     text-align: center;
     color: white;
-    font-size: 50px;
+    font-size: 25px;
 }
