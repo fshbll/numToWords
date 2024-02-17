@@ -1,6 +1,6 @@
 <?php
     $DB_HOST = "localhost";
-    $DB_NAME = "database";
+    $DB_NAME = "fetched_data";
     $DB_USER = "root";
     $DB_PASS = "";
     $conn = new mysqli($DB_HOST,$DB_USER,$DB_PASS,$DB_NAME);

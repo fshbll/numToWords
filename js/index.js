@@ -74,7 +74,7 @@ const convertToNumWords = () => {
 
     document.getElementById("worded-numbers").textContent = wordNum;
     document.getElementById("copyNum").style.display = "block";
-    send_value()
+    send_value(rawData, wordNum)
 
 }
 
@@ -86,13 +86,13 @@ const copyData = () => {
     alert("Copied to Clipboard")
 } 
 
-function send_value() {
+function send_value(num, word) {
     $.ajax({
         type: 'post',
-        url:'history.php',
+        url:'../php/database/history.php',
         data: {
-            readNum: "rawData",
-            readNumWords: "numWords"
+            read_num: num,
+            read_num_words: word
         },
         success: function (data) {
             console.log(data)

@@ -1,18 +1,22 @@
 <?php
+    include 'db_connection.php';
 
-    $readNum = $_POST['rawData'];
-    $readNumWords = $_POST['numWords'];
+    $read_num = $_POST['read_num'];
+    $read_num_words = $_POST['read_num_words'];
 
-    $DB_INSERT = "INSERT INTO fetcheddata (fetchedNum, fetchedNumWord) VALUES ($readNum, $readNumWords)";
-    $DB_SELECT = "SELECT fetchedDataID, fetchedNum, fetchedNumWord FROM fetcheddata";
-    $DB_SELECT_RESULT = $conn->query($DB_INSERT);
+    $DB_ALTER = "ALTER TABLE num_to_words MODIFY COLUMN session_id INT AUTO_INCREMENT;";
+    $DB_ALTER_RESULT = $conn->query($DB_ALTER);
 
-    echo "<script> console.log('Debug Objects: " . $readNum . "'); </script>";
-
+    $DB_INSERT = "INSERT INTO num_to_words (fetched_num, fetched_num_words) VALUES ('$read_num', '$read_num_words' )";
+    $DB_INSERT = $conn->query($DB_INSERT);
+    
+    $DB_SELECT = "SELECT fetched_num, fetched_num_words FROM num_to_words";
+    $DB_SELECT_RESULT = $conn->query($DB_SELECT);
+  
     if ($DB_SELECT_RESULT->num_rows > 0) {
         // output data of each row
         while($row = $DB_SELECT_RESULT->fetch_assoc()) {
-          echo "Number: " . $row["fetchedNum"] . "<br>" . "Number Word: " . $row["fetchedNumWord"] . "<br>";
+          echo "Number: " . $row["fetched_num"] . "n/" . "Number Word: " . $row["fetched_num_words"] . "<br>";
         }
     } else {
         echo "0 results";
