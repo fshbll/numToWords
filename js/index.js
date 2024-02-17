@@ -41,7 +41,7 @@ const convertToNumWords = () => {
         return words;
     };
 
-    const streek = ['billion', 'million', 'thousand', ''];
+    const streek = [' billion', ' million', ' thousand', ''];
     let words = '';
 
     const converter = (num) => {
@@ -49,7 +49,7 @@ const convertToNumWords = () => {
             const partVal = Math.floor(num / i);
 
             if (partVal > 0) {
-                words += intToWords(partVal) + ' ' + streek[j];
+                words += intToWords(partVal) + streek[j];
                 num %= i;
 
                 if (num > 0) {
@@ -89,8 +89,9 @@ const copyData = () => {
 function send_value(num, word) {
     $.ajax({
         type: 'post',
-        url:'../php/database/history.php',
+        url:'../php/database/history_route.php',
         data: {
+
             read_num: num,
             read_num_words: word
         },

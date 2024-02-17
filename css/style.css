@@ -3,19 +3,10 @@
     src: url("fonts/Poppins/Poppins-Regular.ttf");
 }
 
-.main-div{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-}
-
-.main-div .history-container {
-    display: block;
-}
-
-
-body {
     background-image: linear-gradient(to bottom right, #C5E898, #29ADB2);
     height: 100vh;
     overflow: hidden;
@@ -23,15 +14,24 @@ body {
     color: #265073;
 }
 
-.container{
+.main-div{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.converter-container{
     height: relative;
-    width: 500px;
+    width: 400px;
     background-color: #ffff;
     border-radius: 3.5em;
 
 }
 
-.container .top-part{
+.converter-container .top-part{
     height: 100px;
     background: #265073;
     display: flex;
@@ -45,11 +45,7 @@ body {
     color: white;
 }
 
-/* .container .worded-numbers-container #copyNum {
-    display: none;
-} */
-
-.container .worded-numbers-container {
+.converter-container .worded-numbers-container {
     display: block;
     border-bottom: solid;
     border-color: #265073;
@@ -57,7 +53,7 @@ body {
     margin: 2.5em;
 }
 
-.container .input-part {
+.converter-container .input-part {
     height: relative;
     margin-top: 2.5em;
     margin-bottom: 2.5em;
@@ -65,7 +61,7 @@ body {
     margin-right: 1em;
 }
 
-.container .input-part form {
+.converter-container .input-part form {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -75,7 +71,7 @@ body {
     margin-left: auto;
 }
 
-.container .worded-numbers-container #copyNum {
+.converter-container .worded-numbers-container #copyNum {
     border-radius: 2em;
     height: 3.5em;
     width: 3.5em;
@@ -87,26 +83,66 @@ body {
 
 }
 
-.container .input-part #readNum {
+.converter-container .input-part #readNum {
     padding-left: 10px;
     border-radius: inherit;
     height: 3.5em;
-    width: 60%;
+    width: 70%;
     border: none;
     box-shadow: 0 0 3px #265073;
     outline: none;
     
 }
 
-.main-div .history-container {
+.converter-container .input-part #submitNum {
+    border-radius: inherit;
+    height: 3.5em;
+    width: 3.5em;
+    border: none;
+    background-color: #ffff;
+}
+
+.converter-container .input-part #submitNum .fa-circle-arrow-right{
+    height: relative;
+    width: relative;
+}
+
+.history-div {
+    height: relative;
+    width: 400px;
+    background-color: #ffff;
+    border-radius: 3.5em;
+}
+
+.history-div .top-part {
+    height: 100px;
+    background: #265073;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3.5em 3.5em 0 0;
+}
+
+.history-div .worded-numbers-container {
     display: block;
+    border-bottom: solid;
+    border-color: #265073;
+    padding-left: 10px;
+    margin: 2.5em;
 }
 
-/* .container .input-part #readNum:hover{
-    box-shadow: 0 0 1px rgb(53, 50, 50);
-} */
+.history-div .input-part {
+    height: relative;
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+    display: flex;
+    justify-content: space-evenly;
 
-.container .input-part #submitNum {
+}
+
+.history-div .input-part #delete-history {
     border-radius: inherit;
     height: 3.5em;
     width: 3.5em;
@@ -114,10 +150,22 @@ body {
     background-color: #ffff;
 }
 
-.container .input-part #history{
-    border-radius: inherit;
-    height: 3.5em;
-    width: 3.5em;
-    border: none;
-    background-color: #ffff;
+.title-div{
+    display: flex;
+    flex-basis: 100%;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-div .title-container {
+    background-color: #265073;
+    width: 67%;
+    border-radius: 3em;
+}
+
+.title-div h1{
+    text-align: center;
+    color: white;
+    font-size: 50px;
 }

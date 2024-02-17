@@ -16,7 +16,7 @@
     if ($DB_SELECT_RESULT->num_rows > 0) {
         // output data of each row
         while($row = $DB_SELECT_RESULT->fetch_assoc()) {
-          echo "Number: " . $row["fetched_num"] . "n/" . "Number Word: " . $row["fetched_num_words"] . "<br>";
+          echo "\n" . "\n" . "Number: " . $row["fetched_num"] . "\n" . "Number Word: " . $row["fetched_num_words"];
         }
     } else {
         echo "0 results";
