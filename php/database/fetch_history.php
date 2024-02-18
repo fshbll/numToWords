@@ -12,6 +12,7 @@
             
             echo '<div class="history-post">' . 
                         '<p>' . 'Number: '. '<b>' . '<span class="data">' . $fetchedNum . '<span>' . '</b>' . '</p>' .
+                        // '<a href="print_cheque.php" id="print"><i class="fa-solid fa-arrow-right" style="color: #fff"></i></a>' .
                         '<p>' . 'Number Word: '. '<b>' . '<span class="data">' . $fetchedNumWords . '<span>' . '</b>' . '</p>' . 
                 '</div>';
         }

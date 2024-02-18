@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number to Number Words</title>
     <link rel="stylesheet" href="./css/style.css"> 
-    <link rel="stylesheet" href="assets/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="assets/fontawesome/css/solid.css">
+    <link rel="stylesheet" href="./icons/css/fontawesome.css">
+    <link rel="stylesheet" href="./icons/css/solid.css">
     <script src="./js/converter.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
 </head>

@@ -1,8 +1,10 @@
+/* Font for the entire page */
 @font-face {
     font-family: "poppins";
     src: url("fonts/Poppins/Poppins-Regular.ttf");
 }
 
+/* Body styling */
 body {
     display: flex;
     justify-content: center;
@@ -16,7 +18,8 @@ body {
     min-height: auto;
 }
 
-.main-div{
+/* Main container styling */
+.main-div {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -30,37 +33,39 @@ body {
     border-radius: 3.5em;
 }
 
-.converter-container{
+/* Container for the converter */
+.converter-container {
     height: relative;
     width: 100%;
     background-color: #FAF8ED;
     border-radius: 0em 0em 3.5em 3.5em;
 }
 
-.top-part{
+/* Top part of the converter container */
+.top-part {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     text-align: center;
     height: auto;
-    background-image: linear-gradient(to bottom right, #3A4D39, #212c20);
     border-radius: 3.2em 3.2em 0 0;
     color: #FAF8ED;
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 
-.top-part h1{
+.top-part h1 {
     font-size: 30px;
     flex-grow: 1;
     flex-basis: 100%;
-    margin: 0px
+    margin: 0px;
 }
 
-.top-part h3{
+.top-part h3 {
     font-family: "poppins";
 }
 
+/* Input part styling */
 .converter-container .input-part {
     height: relative;
     margin-top: 1em;
@@ -69,7 +74,6 @@ body {
     margin-right: 1em;
     padding-right: 10px;
     padding-left: 10px;
-
 }
 
 .converter-container .input-part form {
@@ -95,16 +99,13 @@ body {
     box-shadow: 0 0 3px #3A4D39;
     outline: none;
     background-color: #FAF8ED;
-    
 }
 
-/* .converter-container .input-part #readNum:focus{
-    transform: scale(1.10, 1.10);
-} */
-
+/* Button styling */
 .converter-container .input-part #submitNum {
     height: 3.8em;
     width: 75%;
+    padding: 0%;
     border-radius: inherit;
     border: #3A4D39;
     background-image: linear-gradient(to bottom right, #3A4D39, #212c20);
@@ -112,10 +113,7 @@ body {
     font-size: 13px;
 }
 
-.converter-container .input-part #submitNum:hover{
-    transform: scale(1.05, 1.05);
-}
-
+/* Delete history button styling */
 #delete-history {
     border-radius: inherit;
     height: 3.8em;
@@ -124,10 +122,7 @@ body {
     background-image: linear-gradient(to bottom right, #B80000, #820300);
 }
 
-#delete-history:hover{
-    transform: scale(1.05, 1.05);
-}
-
+/* History container styling */
 .history-container {
     display: none;
     border-color: #3A4D39;
@@ -136,32 +131,36 @@ body {
     max-height: 320px;
     border-bottom: 1px;
     transition: all .5s ease;
-
 }
 
+/* Individual history post styling */
 .history-post {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
     padding: 13px;
     background-color: #748E63;
-    /* background-image: linear-gradient(to bottom right, #12372A, #436850); */
     border-radius: 1.5em;
     margin: 5px;
     gap: 3px;
 }
 
+/* Hover effect on history post */
 .history-post:hover {
     transform: scale(1.02, 1.02);
 }
 
-.history-post p{
+/* Styling for paragraphs within history post */
+.history-post p {
     color: #FAF8ED;
     padding-left: 10px;
+    padding-right: 10px;
     margin: 5px;
 }
 
-.history-post .data{
+/* Styling for data within history post */
+.history-post .data {
     color: #FAF8ED;
     border-radius: 1em;
     margin: 5px;
@@ -169,27 +168,20 @@ body {
     flex-grow: 1;
 }
 
+/* Hover effect on paragraphs within history post */
 .history-post p:hover {
     transform: scale(1.05, 1.05);
 }
 
-.title-div{
-    width: relative;
-    display: flex;
-    flex-basis: 100%;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-}
+/* Print button styling */
+/* #print {
+    border: none;
+    background-color: #748E63;
+    height: 2em;
+    width: 2em;
+} */
 
-.title-div .title-container {
-    width: 100%;
-}
-
-.title-div h1{
-    background-color: none;
-    margin-bottom: 0%;
-    text-align: center;
-    color: #FAF8ED;
-    font-size: 20px;
-}
+/* Hover effect on print button */
+/* #print:hover {
+    transform: scale(1.05, 1.05);
+} */
