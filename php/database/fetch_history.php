@@ -11,8 +11,8 @@
             $fetchedNumWords = $row['fetched_num_words'];
             
             echo '<div class="history-post">' . 
-                        '<p class="data">' . $fetchedNum . '</p>' .
-                        '<p class="data" style="border-bottom: solid">' . $fetchedNumWords . '</p>' . 
+                        '<p>' . 'Number: '. '<b>' . '<span class="data">' . $fetchedNum . '<span>' . '</b>' . '</p>' .
+                        '<p>' . 'Number Word: '. '<b>' . '<span class="data">' . $fetchedNumWords . '<span>' . '</b>' . '</p>' . 
                 '</div>';
         }
     } else {
