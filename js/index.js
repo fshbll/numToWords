@@ -2,12 +2,6 @@
 $(document).ready(function() {
     fetch_data()
 
-    // attach a 'one-time' click event to 'submitNum'
-    $('#submitNum').one('click', function() {
-        // toggle the visibility of 'history-container'
-        $('.history-container').toggle();
-    });
-
     // attach a click event to 'submitNum'
     $('#submitNum').click(function() {
         // calls the function convertToNumWords()
@@ -47,7 +41,7 @@ $(document).ready(function() {
         );
 
         $('#confirm').click(function() {
-            remove_data()
+            delete_data()
             $('.notifier_blur').toggle()
             $("#readNum").val('');
 
@@ -95,8 +89,11 @@ function fetch_data() {
                     '<p>Number word: <b><span class="data">' + fetchedNumWords + '</span></b></p></div>');
 
             }
-            $('.history-container').html(prevData).animate({ scrollTop: $('.history-container')[0].scrollHeight }, 500);
+            $('.history-container')
+            .html(prevData)
             // scroll to the bottom of the history container with animation
+            .css('display','block')
+            .animate({ scrollTop: $('.history-container')[0].scrollHeight }, 500);
             // $('.history-container')
             
             // attach a click event to elements with the class 'data' for copying text to clipboard
@@ -125,18 +122,19 @@ function fetch_data() {
 }
 
 // function to remove data from the server using AJAX and update the history
-function remove_data() {
+function delete_data() {
     $.ajax({
-        method: 'post',
-        url: '../php/database/history_truncate.php',
-        success: function() {
-            fetch_data();
-            // display an alert indicating that the history has been cleared
-            // toggle the visibility of 'history-container'
-            $('.history-container').children('.history-post').remove()
-            // attach a 'one-time' click event to 'submitNum' sinve we toggled it again 
+        method: 'PUT',
+        url: '../php/database/history_route.php',
+        data: {
+             is_deleted: '1'
+            },
+        success: function(data) {
+            // Handle successful response
+            fetch_data()
         }
     });
+    
     // prevent the submission
     return false;
 }

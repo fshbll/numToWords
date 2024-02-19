@@ -4,7 +4,7 @@ const convertToNumWords = () => {
     const rawData = document.getElementById("readNum").value;
     
     // validation checks
-    if(/[a-zA-Z]/.test(rawData)) {
+    if(/[!@#$%^&*()_+{}\[\]:;<>,?~\\/-]/.test(rawData)  || /[a-zA-Z]/.test(rawData)) {
         alert("Invalid Input");
         return '';
     } else if (rawData <= 0) {

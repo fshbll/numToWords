@@ -13,7 +13,7 @@ if (!$DB_ALTER_RESULT) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Create a prepared statement for SELECT
-    $querySelect = "SELECT session_id, fetched_num, fetched_num_words FROM num_to_words";
+    $querySelect = "SELECT session_id, fetched_num, fetched_num_words FROM num_to_words WHERE is_deleted = 0";
     $stmtSelect = mysqli_prepare($conn, $querySelect);
 
     // Check if the prepared statement was created successfully
@@ -67,6 +67,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_stmt_close($stmtInsert);
     } else {
         // Handle the case where the INSERT prepared statement creation failed
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+    parse_str(file_get_contents("php://input"), $putData);
+    $is_deleted = $putData['is_deleted'];
+    $is_deleted_default = 0;
+
+    $queryUpdate = "UPDATE num_to_words SET is_deleted = ? WHERE is_deleted = ?";
+    $stmtUpdate = mysqli_prepare($conn, $queryUpdate);
+
+    if ($stmtUpdate) {
+        // Bind parameters to the prepared statement
+        mysqli_stmt_bind_param($stmtUpdate, "ii", $is_deleted, $is_deleted_default);
+
+        // Execute the UPDATE prepared statement
+        mysqli_stmt_execute($stmtUpdate);
+
+        // Close the UPDATE statement
+        mysqli_stmt_close($stmtUpdate);
+    } else {
+        // Handle the case where the UPDATE prepared statement creation failed
         echo "Error: " . mysqli_error($conn);
     }
 }
