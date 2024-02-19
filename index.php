@@ -10,8 +10,13 @@
     <script src="./js/converter.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
 </head>
-<body>     
-    <div class="main-div">   
+<body>
+    <!-- <div class="notifier_div"> 
+        <div class="notifier_blur">
+            <form class="delete_notifier"></form>
+        </div>
+    </div>   -->
+    <div class="main-div">
         <div class = "top-part">
             <h1 class=title>Cheque App</h1>
             <h3><i class="fa-solid fa-rotate fa-2xl"></i></h3>
@@ -23,6 +28,7 @@
                 <form method='post' name='sendform'>
                     <input id="readNum" type="number" placeholder="Enter a number" value="" />
                     <button id="delete-history" type="button"><i class="fa-solid fa-trash fa-xl" style="color: white;"></i></button>
+                    <!-- <button id="view-history" type="button"><i class="fa-solid fa-clock-rotate-left fa-xl" style="color: white"></i></button> -->
                     <button id="submitNum" type="button">Convert</button>
                 </form>    
             </div>

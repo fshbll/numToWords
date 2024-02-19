@@ -115,6 +115,16 @@ body {
 
 /* Delete history button styling */
 #delete-history {
+    display: block;
+    border-radius: inherit;
+    height: 3.8em;
+    width: 22%;
+    border: none;
+    background-image: linear-gradient(to bottom right, #B80000, #820300);
+}
+
+#view-history{
+    display: block;
     border-radius: inherit;
     height: 3.8em;
     width: 22%;
@@ -172,6 +182,7 @@ body {
 .history-post p:hover {
     transform: scale(1.05, 1.05);
 }
+
 
 /* Print button styling */
 /* #print {

@@ -1,6 +1,7 @@
 // ensures the DOM is fully loaded before executing the script
 $(document).ready(function() {
-    
+    fetch_data()
+
     // attach a 'one-time' click event to 'submitNum'
     $('#submitNum').one('click', function() {
         // toggle the visibility of 'history-container'
@@ -15,8 +16,11 @@ $(document).ready(function() {
 
     // attach a click event to 'delete-history'
     $('#delete-history').click(function() {
-        // call the function remove_data()
-        remove_data();
+        if(confirm("Confirm Deletion?") ==true){
+            remove_data();
+        } else {
+            return;
+        }
     });
 });
 
@@ -30,6 +34,7 @@ function send_data(num, word) {
             read_num_words: word
         },
         success: function(data) {
+            dataCount++;
             // after successful data submission, fetch and update the history
             fetch_data();
         }
@@ -43,10 +48,20 @@ function fetch_data() {
     $.ajax({
         method: 'GET',
         url: '../php/database/fetch_history.php',
+        dataType: 'json',
         success: function(data) {
-            // update the content of elements with the class 'history-container'
-            $('.history-container').html(data);
-            
+            let prevData = []
+            // Iterate through each entry in the JSON response
+            for (var i = 0; i < data.length; i++) {
+                var fetchedNum = data[i].fetched_num;
+                var fetchedNumWords = data[i].fetched_num_words;
+
+                prevData.push("<div class='history-post'> <p> Number: <span class='data'>" + fetchedNum + "</span> </p>" +
+                    '<p>Number Word: <b><span class="data">' + fetchedNumWords + '</span></b></p></div>');
+                dataCount = prevData.length
+                
+            }
+            $('.history-container').html(prevData)
             // scroll to the bottom of the history container with animation
             $('.history-container').animate({ scrollTop: $('.history-container')[0].scrollHeight }, 500);
             
@@ -65,6 +80,10 @@ function fetch_data() {
                     console.error('Unable to copy to clipboard', error);
                   });
             });
+
+            if(prevData.length>0){
+                $('.history-container').css('display','block')
+            }
         }
     });
     // prevent the submission
@@ -76,17 +95,14 @@ function remove_data() {
     $.ajax({
         method: 'post',
         url: '../php/database/history_truncate.php',
-        success: function(data) {
-            // after successful data removal, fetch and update the history
+        success: function() {
+            dataCount = 0;
             fetch_data();
             // display an alert indicating that the history has been cleared
             alert("History cleared");
-            $('.history-container').toggle();
+            // toggle the visibility of 'history-container'
+            $('.history-container').children('.history-post').remove()
             // attach a 'one-time' click event to 'submitNum' sinve we toggled it again 
-            $('#submitNum').one('click', function() {
-                // toggle the visibility of 'history-container'
-                $('.history-container').toggle();
-            });
         }
     });
     // prevent the submission

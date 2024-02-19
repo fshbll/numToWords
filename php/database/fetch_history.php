@@ -1,23 +1,25 @@
-<?php 
-    include 'db_connection.php';
 
-    $DB_SELECT = "SELECT fetched_num, fetched_num_words FROM num_to_words";
-    $DB_SELECT_RESULT = $conn->query($DB_SELECT);
+<?php
+// Your database connection code here
+include 'db_connection.php';
+// Fetch data from the database
+$query = "SELECT session_id, fetched_num, fetched_num_words FROM num_to_words";
+$result = mysqli_query($conn, $query);
 
-    if ($DB_SELECT_RESULT->num_rows > 0) {
-            // output data of each row
-        while($row = $DB_SELECT_RESULT->fetch_assoc()) {
-            $fetchedNum = $row['fetched_num'];
-            $fetchedNumWords = $row['fetched_num_words'];
-            
-            echo '<div class="history-post">' . 
-                        '<p>' . 'Number: '. '<b>' . '<span class="data">' . $fetchedNum . '<span>' . '</b>' . '</p>' .
-                        // '<a href="print_cheque.php" id="print"><i class="fa-solid fa-arrow-right" style="color: #fff"></i></a>' .
-                        '<p>' . 'Number Word: '. '<b>' . '<span class="data">' . $fetchedNumWords . '<span>' . '</b>' . '</p>' . 
-                '</div>';
-        }
-    } else {
-            echo "0 results";
+// Check if the query was successful
+if ($result) {
+    // Fetch the data as an associative array
+    while($row = mysqli_fetch_assoc($result)){
+        $data[] = $row;
     }
-    $conn->close();
+    // Return data as JSON
+    header('Content-Type: application/json');
+    echo json_encode($data);
+} else {
+    // Handle the case where the query failed
+    echo "Error: " . mysqli_error($conn);
+}
+
+// Close the database connection
+mysqli_close($conn);
 ?>
