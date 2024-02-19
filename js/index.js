@@ -54,7 +54,6 @@ $(document).ready(function() {
         })
 
         $('#cancel').click(function() {
-            remove_data()
             $('.notifier_blur').toggle()
         })
     })
