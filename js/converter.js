@@ -1,28 +1,30 @@
-// Function to convert a number to words
+// function to convert number to words
 const convertToNumWords = () => {
-    // Get raw input from the user
+    // get raw input
     const rawData = document.getElementById("readNum").value;
     
-    // Validation checks for input
-    if (rawData <= 0) {
-        alert("Input cannot be null or an Exponent.");
+    // validation checks
+    if(/[a-zA-Z]/.test(rawData)) {
+        alert("Invalid Input");
+        return '';
+    } else if (rawData <= 0) {
+        alert("Input cannot be null");
         return '';
     } else if (rawData > 999999999999999) {
         alert("Exceeded number limit");
         return '';
     }
 
-    // Split the input into integer and decimal parts
+    // split the input into integer and decimal parts
     const readNum = rawData.split('.');
     const intPart = readNum[0];
     const decPart = Math.round((readNum[1] || 0) * 100) / 100;
-
-    // Function to convert integer part to words
+    // function to convert integer part to words
     const intToWords = (num) => {
         let words = '';
 
         if (num >= 100) {
-            // Convert hundreds place
+            // convert hundreds
             words += `${convertOnesToWords(Math.floor(num / 100))} hundred`;
             num %= 100;
 
@@ -32,7 +34,7 @@ const convertToNumWords = () => {
         }
 
         if (num >= 20) {
-            // Convert tens place
+            // convert tens
             words += convertTensToWords(Math.floor(num / 10));
             num %= 10;
 
@@ -42,24 +44,24 @@ const convertToNumWords = () => {
         }
 
         if (num > 0) {
-            // Convert ones place or teens
+            // convert ones or teens
             words += (num < 10) ? convertOnesToWords(num) : convertTeensToWords(num);
         }
 
         return words;
     };
 
-    // Suffixes for each part (trillion, billion, million, thousand, empty string)
+    // suffixes for each part (trillion, billion, million, thousand)
     const streek = [' trillion', ' billion', ' million', ' thousand', ''];
     let words = '';
 
-    // Function to convert the entire number
+    // function to convert the entire number
     const converter = (num) => {
         for (let i = 1000000000000, j = 0; i >= 1; i /= 1000, j++) {
             const partVal = Math.floor(num / i);
 
             if (partVal > 0) {
-                // Convert each part and concatenate
+                // convert each part and append 
                 words += intToWords(partVal) + streek[j];
                 num %= i;
 
@@ -71,15 +73,16 @@ const convertToNumWords = () => {
 
         if (num > 0) {
             words += intToWords(num);
-        } else {
+        } 
+        else {
             words += ' pesos'
         }
     };
 
-    // Convert the integer part of the number
+    // convert the integer part of the number
     converter(parseInt(intPart, 10));
 
-    // Combine the integer and decimal parts for the final result
+    // combine the integer and decimal parts for the final result
     let wordNum = words;
 
     if (decPart) {
