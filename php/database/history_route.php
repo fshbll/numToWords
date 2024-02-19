@@ -1,15 +1,33 @@
 <?php
 include 'db_connection.php';
 
-// Alter the table to modify the session_id column
-$DB_ALTER = "ALTER TABLE num_to_words MODIFY COLUMN session_id INT AUTO_INCREMENT";
-$DB_ALTER_RESULT = $conn->query($DB_ALTER);
+// Modify the session_id to auto-increment
+$DB_ALTER_COLUMN = "ALTER TABLE num_to_words MODIFY COLUMN session_id INT AUTO_INCREMENT";
+$stmtAlterColumn = $conn->prepare($DB_ALTER_COLUMN);
 
-// Check if the ALTER TABLE query was successful
-if (!$DB_ALTER_RESULT) {
+if ($stmtAlterColumn) {
+    $stmtAlterColumn->execute();
+    $stmtAlterColumn->close();
+} else {
     echo "Error: " . $conn->error;
-    // Handle the error appropriately
 }
+
+// Set auto-increment starting value for session_id
+// $DB_ALTER_START_VALUE = "ALTER TABLE num_to_words AUTO_INCREMENT = 1000";
+// $stmtAlterStartValue = $conn->prepare($DB_ALTER_START_VALUE);
+
+// if ($stmtAlterStartValue) {
+//     $stmtAlterStartValue->execute();
+//     $stmtAlterStartValue->close();
+// } else {
+//     echo "Error: " . $conn->error;
+// }
+
+// // Check if the ALTER TABLE query was successful
+// if (!$DB_ALTER_RESULT) {
+//     echo "Error: " . $conn->error;
+//     // Handle the error appropriately
+// }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Create a prepared statement for SELECT
