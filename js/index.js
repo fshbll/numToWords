@@ -82,9 +82,10 @@ function send_data(num, word) {
 function fetch_data() {
     $.ajax({
         method: 'GET',
-        url: '../php/database/fetch_history.php',
+        url: '../php/database/history_route.php',
         dataType: 'json',
         success: function(data) {
+            console.log(data)
             let prevData = []
             // Iterate through each entry in the JSON response
             for (var i = 0; i < data.length; i++) {
