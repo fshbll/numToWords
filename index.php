@@ -11,11 +11,9 @@
     <script src="js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-    <!-- <div class="notifier_div"> 
-        <div class="notifier_blur">
-            <form class="delete_notifier"></form>
-        </div>
-    </div>   -->
+    <div class="notifier_blur">
+        <div class="delete_notifier"></div>
+    </div>
     <div class="main-div">
         <div class = "top-part">
             <h1 class=title>Cheque App</h1>

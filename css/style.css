@@ -16,6 +16,7 @@ body {
     color: #ff9a35;
     min-width: auto;
     min-height: auto;
+    margin: 5px;
 }
 
 /* Main container styling */
@@ -183,7 +184,39 @@ body {
     transform: scale(1.05, 1.05);
 }
 
+.notifier_blur{
+    display: none;
+}
 
+
+#confirmation{
+    flex-basis: 80%;
+    flex-grow: 1;
+    text-align: center;
+    color: #3A4D39;
+}
+
+#cancel{
+    border-radius: 1em;
+    width: 80px;
+    height: 30px;
+    background-image: linear-gradient(to bottom right, white, rgb(219, 219, 219));
+    border: none;
+    box-shadow: 0 0 2px #3A4D39;
+
+
+}
+
+#confirm{
+    border-radius: 1em;
+    width: 80px;
+    height: 30px;
+    border: none;
+    color: white;
+    background-image: linear-gradient(to bottom right, #B80000, #820300);
+    box-shadow: 0 0 2px #3c0100;
+
+}
 /* Print button styling */
 /* #print {
     border: none;

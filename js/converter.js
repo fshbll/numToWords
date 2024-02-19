@@ -10,7 +10,7 @@ const convertToNumWords = () => {
     } else if (rawData <= 0) {
         alert("Input cannot be null");
         return '';
-    } else if (rawData > 999999999999999) {
+    } else if (rawData > 999999999999999.99) {
         alert("Exceeded number limit");
         return '';
     }
@@ -25,7 +25,7 @@ const convertToNumWords = () => {
 
         if (num >= 100) {
             // convert hundreds
-            words += `${convertOnesToWords(Math.floor(num / 100))} hundred`;
+            words += `${convertOnesToWords(Math.floor(num / 100))} Hundred`;
             num %= 100;
 
             if (num > 0) {
@@ -52,7 +52,7 @@ const convertToNumWords = () => {
     };
 
     // suffixes for each part (trillion, billion, million, thousand)
-    const streek = [' trillion', ' billion', ' million', ' thousand', ''];
+    const streek = [' Trillion', ' Billion', ' Million', ' Thousand', ''];
     let words = '';
 
     // function to convert the entire number
@@ -75,7 +75,7 @@ const convertToNumWords = () => {
             words += intToWords(num);
         } 
         else {
-            words += ' pesos'
+            words += ' Pesos'
         }
     };
 
@@ -88,11 +88,8 @@ const convertToNumWords = () => {
     if (decPart) {
         // Convert the first two digits of the decimal part
         const firstTwoDigits = Math.abs(decPart).toString().slice(0, 2);
-        wordNum += ` and ${intToWords(parseInt(firstTwoDigits, 10))} cents`;
+        wordNum += ` and ${intToWords(parseInt(firstTwoDigits, 10))} Cents`;
     }
-
-    // Clear the input field
-    document.getElementById("readNum").value = "";
 
     // Call a function to send data (assuming it's a custom function)
     send_data(rawData, wordNum);
@@ -101,45 +98,45 @@ const convertToNumWords = () => {
 // Functions to convert ones, tens, and teens to words
 const convertOnesToWords = (ones) => {
     switch (ones) {
-        case 1: return 'one';
-        case 2: return 'two';
-        case 3: return 'three';
-        case 4: return 'four';
-        case 5: return 'five';
-        case 6: return 'six';
-        case 7: return 'seven';
-        case 8: return 'eight';
-        case 9: return 'nine';
+        case 1: return 'One';
+        case 2: return 'Two';
+        case 3: return 'Three';
+        case 4: return 'Four';
+        case 5: return 'Five';
+        case 6: return 'Six';
+        case 7: return 'Seven';
+        case 8: return 'Eight';
+        case 9: return 'Nine';
         default: return '';
     }       
 };
 
 const convertTensToWords = (tens) => {
     switch (tens) {
-        case 2: return 'twenty';
-        case 3: return 'thirty';
-        case 4: return 'forty';
-        case 5: return 'fifty';
-        case 6: return 'sixty';
-        case 7: return 'seventy';
-        case 8: return 'eighty';
-        case 9: return 'ninety';
+        case 2: return 'Twenty';
+        case 3: return 'Thirty';
+        case 4: return 'Forty';
+        case 5: return 'Fifty';
+        case 6: return 'Sixty';
+        case 7: return 'Seventy';
+        case 8: return 'Eighty';
+        case 9: return 'Ninety';
         default:  return '';
     }
 };
 
 const convertTeensToWords = (teens) => {
     switch (teens) {
-        case 10: return 'ten';
-        case 11: return 'eleven';
-        case 12: return 'twelve';
-        case 13: return 'thirteen';
-        case 14: return 'fourteen';
-        case 15: return 'fifteen';
-        case 16: return 'sixteen';
-        case 17: return 'seventeen';
-        case 18: return 'eighteen';
-        case 19: return 'nineteen';
+        case 10: return 'Ten';
+        case 11: return 'Eleven';
+        case 12: return 'Twelve';
+        case 13: return 'Thirteen';
+        case 14: return 'Fourteen';
+        case 15: return 'Fifteen';
+        case 16: return 'Sixteen';
+        case 17: return 'Seventeen';
+        case 18: return 'Eighteen';
+        case 19: return 'Nineteen';
         default: return '';
     }
 };
